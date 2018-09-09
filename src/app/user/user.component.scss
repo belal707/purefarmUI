@@ -1,0 +1,69 @@
+.container {
+    height: 30px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 25px;    
+}
+.col{
+    padding: .4em 1.3em;
+    border: 1px solid #0829e9;
+    position: absolute;
+    left: 400px;
+    width: 70.7%;
+}
+.color-dark{
+    background: #0829e9;
+    color: #f0f0f0;
+}
+
+.color-light{
+    background: #f0f0f0;
+}
+
+input.txt {
+    border: 0;
+    padding: 1em;
+    width: 80%;
+    margin-bottom: 2em;
+}
+
+input.btn {
+    border: 0;
+    display: block;
+    padding: 1em 3em;
+    background: #A5F883;
+    color:#003A61;
+    margin-bottom: 1em;
+    cursor: pointer;
+}
+.life-container {
+    background: #f0f0f0;
+    padding: 5em;
+    font-weight: bold;
+    cursor:pointer;
+}
+.text_label
+{
+    float: left; 
+    text-align: right; 
+    width: 150px;
+    padding: 5px;
+}
+.input_label
+{
+    text-align: left; 
+    padding: 5px;
+}
+
+.input_label2
+{
+    text-align: left; 
+    padding: 5px;
+}
+.input_label3
+{
+    text-align: center; 
+    padding: 5px;
+}
+  

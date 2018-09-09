@@ -1,0 +1,42 @@
+.main_leftnav
+{
+    background-color: #FFFFFF;
+     width: 270px;
+     height: 680px;
+     float: left;
+     border-radius: 5px;
+     margin-top: 5px;
+}
+
+.leftnav_main
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px 10px;
+    width: auto; 
+}
+.leftnav_content
+{
+    background-color: #838fa3;
+    padding: 10px 17px; 
+    font-weight: inherit;
+    color: #FFFFFF;
+    width:auto;
+    height: auto;
+    border-radius:5px;
+}
+a {
+    text-decoration: none !important;
+}
+.leftnav_user
+{
+    border-radius: 50px;
+    background-color: darkturquoise;
+    width: 50px;height: 50px;float: left;
+}
+.menu:hover{
+    background-color: rgb(209, 58, 58);
+}
+.nenu_click:active
+{
+    background-color: aqua;
+}

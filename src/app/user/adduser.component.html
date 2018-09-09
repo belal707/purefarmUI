@@ -1,0 +1,77 @@
+<div>
+    <button class="btn btn-outline-primary mb-2 mr-2" (click)="openLg(content)">Add user</button>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header cust_bag">
+        <h5 class="modal-title">Add User</h5>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form>
+        <div class="modal-body custom_hight">
+            <table name="style">
+                <tr style="text-align: right; height: 50px; width: 100px">
+                    <td style="width: 200px">First Name : </td>
+                    <td>
+                        <input type="text" name="fname" [(ngModel)]="user.fname">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr style="text-align: right; height: 50px; width: 100px">
+                    <td>Last Name :</td>
+                    <td>
+                        <input type="text" name="lname" [(ngModel)]="user.lname">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr style="text-align: right; height: 50px; width: 100px">
+                    <td>Mobile :</td>
+                    <td>
+                        <input type="text" name="mobile" [(ngModel)]="user.mobile">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr style="text-align: right; height: 50px; width: 100px">
+                    <td>Address :</td>
+                    <td>
+                        <input type="text" name="address" [(ngModel)]="user.address">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr style="text-align: right; height: 50px; width: 100px">
+                    <td>Email Id : </td>
+                    <td>
+                        <input type="text" name="emailId" [(ngModel)]="user.emailId">
+                    </td>
+                    <td></td>
+                </tr>
+                <tr style="text-align: right; height: 50px; width: 100px">
+                    <td>Delevery Area : </td>
+                    <td style="text-align: left;">
+                            <select style="width: 183px; height: 32px;" name="deleveryArea" [(ngModel)]="user.deleveryArea">
+                                    <option value="block-1">block-1</option>
+                                    <option value="block-2">block-2</option>
+                            </select>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr style="text-align: right; height: 50px; width: 100px">
+                        <td>Role : </td>
+                        <td style="text-align: left;">
+                                <select style="width: 183px; height: 32px;" name="role" [(ngModel)]="user.role">
+                                        <option value="admin">Admin</option>
+                                        <option value="delevery">Delevery</option>
+                                </select>
+                        </td>
+                        <td></td>
+                    </tr>
+            </table>
+        </div>
+    </form>
+    <div class="modal-footer cust_bag">
+        <button type="button" class="btn btn-light" (click)="c('Close click')">Cancel</button>
+        <button type="button" class="btn btn-light" (click)="addUser()">Add</button>
+    </div>
+</ng-template>

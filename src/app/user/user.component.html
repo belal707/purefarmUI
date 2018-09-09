@@ -1,0 +1,98 @@
+<div style="padding: 10px; font: 20px sans-serif">
+    Manage User
+</div>
+<div style="font-size: 17px; text-align: right; padding-right: 10px">
+  <div style="float: right;"><button (click)="openWindow()">Add</button></div>
+</div>
+<table  align="center" border="1">
+     <tr style="display: block;">
+       <th style="width: 50px">Sr.No.</th><th style="width: 250px">User Name </th><th style="width: 90px">Role</th>
+       <th style="width: 140px">Mob no</th><th style="width: 120px">Status</th><th style="width:150px">Area</th>
+       <th style="width: 220px">Action <div style="float: right;"><button (click)="openWindow()">Add</button></div></th>
+     </tr>
+     <div style="overflow-y: scroll;height: 350px;"> 
+     <tr *ngFor="let user of userList, let i = index">
+        <td style="width: 50px">{{i+1}}</td><td style="width: 250px">{{user.fname+" "+ user.lname}}</td>
+        <td style="width: 90px">{{user.role}}</td><td style="width: 140px">{{user.mobile}}</td>
+        <td style="width: 120px">{{user.status}}</td>
+        <td style="width: 150px">{{user.deleveryArea}}</td><td style="width: 198px"><button (click)="getUser(user.id)">Edit</button> &nbsp; <button (click)="deleteUser(user.id)">Delete</button></td>
+     </tr>
+     </div>
+</table>
+
+<div [ngStyle]="{'position': 'fixed', 'display': display,'width': '100%','height': '100%', 'top': '0','left': '0',
+    'right': '0', 'bottom': '0','background-color': 'rgba(0,0,0,0.5)','z-index': '2'}">
+  <div style="border-radius: 5px; background-color: white;width: 40%; text-align: center; 
+    margin-left: 500px; margin-top: 60px;position:fixed">
+    <div style="font-size: 17px;color:#fff; background: blue; height: 25px; padding: 10px;">{{title}}
+    </div>
+      <div style="padding-top: 20px;">
+        <span style="color: rgb(209, 37, 37);">{{errorMsg}} </span>
+        <form>
+        <div style="text-align: center;">
+          <div class="text_label">First Name :</div>
+          <div class="input_label">
+            <input type="text" name="fname" [(ngModel)]="user.fname">
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div class="text_label">Last Name :</div>
+          <div class="input_label">
+            <input type="text" name="lname" [(ngModel)]="user.lname">
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div class="text_label">Mobile :</div>
+          <div class="input_label">
+            <input type="text" name="mobile" [(ngModel)]="user.mobile">
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div class="text_label">Address :</div>
+          <div class="input_label">
+            <input type="text" name="address" [(ngModel)]="user.address">
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div class="text_label">Email :</div>
+          <div class="input_label">
+            <input type="text" name="emailId" [(ngModel)]="user.emailId">
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div class="text_label">Delevery Area :</div>
+          <div class="input_label">
+            <select style="width: 160px; height: 23px;" name="deleveryArea" [(ngModel)]="user.deleveryArea">
+              <option value="block-1">block-1</option>
+              <option value="block-2">block-2</option>
+            </select>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div class="text_label">Role :</div>
+          <div class="input_label">
+            <select style="width: 160px; height: 23px;" name="role" [(ngModel)]="user.role">
+              <option value="admin">Admin</option>
+              <option value="delevery">Delevery</option>
+            </select>
+          </div>
+        </div>
+        <div *ngIf="isEdit==true" style="text-align: right;">
+            <div class="text_label">Status :</div>
+            <div class="input_label">
+              <select style="width: 160px; height: 23px;" name="status" [(ngModel)]="user.status">
+                <option value="DELETED">DELETED</option>
+                <option value="DEACTIVE">DEACTIVE</option>
+                <option value="PENDING">PENDING</option>
+                <option value="ACTIVE">ACTIVE</option>
+              </select>
+            </div>
+          </div>
+      </form>
+      <div style="font-size: 15px;color:#fff; background: #fff;  height: 30px; padding: 10px;">
+      <button type="button" class="btn btn-light" (click)="cancel()">Cancel</button>&nbsp;
+      <span *ngIf="isEdit==false"><button  type="button" class="btn btn-light" (click)="addUser()">Add</button></span>
+      <span *ngIf="isEdit==true"><button  type="button" class="btn btn-light" (click)="editUser(user.id)">Edit</button></span>
+    </div>
+    </div>
+  </div>

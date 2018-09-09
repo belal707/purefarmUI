@@ -1,0 +1,156 @@
+<div style="padding: 10px; font: 20px sans-serif">
+    Manage Customer
+</div>
+<div style="font-size: 17px;padding-right: 80px"> 
+    <span style="background-color: tomato; font-weight: bold; color: #11752a; font-family: 'Times New Roman', Times, serif; font-size: 16px;
+     text-align: center">{{responseResult}}</span>
+    <!-- <div style="float: right; margin-top: 1px"><button (click)="openWindow()">Add</button></div> -->
+</div>
+<table  align="center" class="table_class" border="1">
+     <tr style="display: block;" >
+       <th style="width:50px">Sr. No.</th><th style="width:170px">Name</th><th style="width:80px">Seq No.</th>
+       <th style="width:140px">Milk Type</th><th style="width:100px">Mob no</th>
+       <th style="width:110px">Status</th><th style="width:170px">Sort Address</th><th style="width: 190px">Action</th>
+     </tr>
+    
+     <div style="overflow-y: scroll;height: 390px;"> 
+     <tr *ngFor="let cust of customer, let i = index" class="tr_h">
+       <td style="width:50px">{{i+1}}</td><td style="width:170px">{{cust.fname +" "+ cust.lname}}</td>
+       <td style="width:80px">{{cust.seqNo}}</td><td style="width:140px">
+          <div *ngFor="let milk of cust.milks">
+            <span>{{milk.milkType+"&nbsp;|&nbsp;"+milk.delevery}}</span>
+          </div>
+        </td><td style="width:100px">{{cust.primaryMob}}</td><td  style="width:110px">{{cust.status}}</td>
+        <td style="width:170px">{{cust.sAddress}}</td><td style="width: 171px"><a (click)="editCust(cust.id)">Edit</a>&nbsp;
+            <a (click)="deleteCust(cust.id)">Delete</a></td>
+     </tr>
+     </div>
+</table>
+<!--  ############################### add customer ######################## -->
+<div [ngStyle]="{'position': 'fixed', 'display': display,'width': '100%','height': '100%', 'top': '0','left': '0',
+    'right': '0', 'bottom': '0','background-color': 'rgba(0,0,0,0.5)','z-index': '2'}">
+    <div style="font-family: 'Times New Roman', Times, serif;border-radius: 5px; background-color: white;width: 40%; text-align: center; margin-left: 500px; margin-top: 60px;position:fixed">
+        <div style="font-size: 17px;color:#fff; background: blue; height: 25px; padding: 10px;">{{title}}
+
+        </div>
+        <form>
+            <div style="padding-top: 20px;"> <span style="color: rgb(209, 37, 37);">{{errorMsg}} </span>
+                <div style="text-align: center;">
+                    <div class="text_label">First Name :</div>
+                    <div class="input_label">
+                        <input type="text" name="fname" [(ngModel)]="customer2.fname">
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="text_label">Last Name :</div>
+                    <div class="input_label">
+                        <input type="text" name="lname" [(ngModel)]="customer2.lname">
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="text_label">Primary Mobile :</div>
+                    <div class="input_label">
+                        <input type="text" name="primaryMobile" [(ngModel)]="customer2.primaryMob">
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="text_label">Secondry Mobile :</div>
+                    <div class="input_label">
+                        <input type="text" name="secondrymobile" [(ngModel)]="customer2.secondryMob">
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="text_label">Sort Address :</div>
+                    <div class="input_label">
+                        <input type="text" name="saddress" [(ngModel)]="customer2.sAddress">
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="text_label">Full Address :</div>
+                    <div class="input_label">
+                        <input type="text" name="address" [(ngModel)]="customer2.address">
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="text_label">City :</div>
+                    <div class="input_label">
+                        <input type="text" name="city" [(ngModel)]="customer2.city">
+                    </div>
+                </div>
+                <div style="text-align: right; ">
+                    <div class="text_label">Postal Code :</div>
+                    <div class="input_label">
+                        <input type="text" name="postalCode" [(ngModel)]="customer2.postalCode">
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="text_label">Email Id : </div>
+                    <div class="input_label">
+                        <input type="text" name="emailId" [(ngModel)]="customer2.emailId">
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="text_label">Delevery Person : </div>
+                    <div class="input_label">
+                        <select style="width: 160px; height: 23px;" name="deleveryArea" [(ngModel)]="customer2.deleveryBoy">
+                            <option *ngFor="let user of users" value={{user.id}}>{{user.fname+" "+user.lname+", Area:"+user.deleveryArea}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="text-align: right;">
+                    <div class="text_label">Sequence No:</div>
+                    <div class="input_label">
+                        <input style="float: left" type="text" name="seq" size="5" [(ngModel)]="customer2.seqNo">
+                    </div>
+                </div>
+                <br>
+                <div style="text-align: right; background: #a0fafa;">
+                    <div class="text_label">Mikl Type :</div>
+                    <div style="position: inherit;">
+                        <div class="input_label2">
+                            <div style="display: inline-block; padding: 2px">
+                                <input type="checkbox" name="cowMilk" value="checked" [(ngModel)]="cow.checked">cow</div>
+                            <div style="display: inline-block; padding-left: 30px;">qty:</div>
+                            <div style="display: inline-block;">
+                                <select  name="milkQty1" [(ngModel)]="cow.milkQty">
+                                    <option *ngFor="let qty of milkQty" value={{qty}}>{{qty}}</option>
+                                </select>
+                            </div>
+                            <div style="display: inline-block;padding: 3px;">delevery:</div>
+                            <div style="display: inline-block;">
+                                <select name="delevery" [(ngModel)]="cow.delevery">
+                                    <option value="morning">Morning</option>
+                                    <option value="evening">Evening</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text_label"></div>
+                    <div class="input_label2">
+                        <div style="display: inline-block; padding: 4px;">
+                            <input type="checkbox" name="isbuffalow" value="buffalow" [(ngModel)]="buffalow.checked">bafellow</div>
+                        <div style="display: inline-block;">qty:</div>
+                        <div style="display: inline-block;">
+                            <select name="buffalowQty" [(ngModel)]="buffalow.milkQty">
+                                <option *ngFor="let qty of milkQty" value={{qty}}>{{qty}}</option>
+                            </select>
+                        </div>
+                        <div style="display: inline-block;padding: 3px;">delevery:</div>
+                        <div style="display: inline-block;">
+                            <select name="buffalowDelevery" [(ngModel)]="buffalow.delevery">
+                                <option value="morning">Morning</option>
+                                <option value="evening">Evening</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                </div>
+           <div style="font-size: 15px;color:#fff; background: #fff;  height: 30px; padding: 10px;">
+                <button (click)="closeWindow()">cancle</button> &nbsp;
+                <button type="button" (click)="addCustomer()">Add</button>
+           </div>
+        </form>
+
+    </div>
+</div>
